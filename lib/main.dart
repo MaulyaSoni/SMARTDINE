@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'config/theme.dart';
-import 'shared/widgets/custom_button.dart';
-import 'flavors/dev.dart';
+import 'features/auth/screens/login_screen.dart';
 
-void main() async {
-  await dotenv.load();
+void main() {
   runApp(const MyApp());
 }
 
@@ -15,27 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Lab 3 Flutter Setup",
+      debugShowCheckedModeBanner: false,
+      title: "SmartDine",
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Flutter Project Setup")),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Project Ready"),
-              const SizedBox(height: 10),
-              Text("Environment: ${FlavorConfig.env}"),
-              const SizedBox(height: 20),
-              CustomButton(
-                text: "Test Button",
-                onPressed: () {},
-              )
-            ],
-          ),
-        ),
-      ),
+      home: const LoginScreen(),
     );
   }
 }
